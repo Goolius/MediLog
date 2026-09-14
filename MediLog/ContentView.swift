@@ -8,14 +8,38 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = MediLogViewModel()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            NavigationStack {
+                DashboardView(viewModel: viewModel)
+            }
+            .tabItem {
+                Label("Today", systemImage: "calendar")
+            }
+
+            NavigationStack {
+                AddMedicationView(viewModel: viewModel)
+            }
+            .tabItem {
+                Label("Add", systemImage: "plus.circle")
+            }
+
+            NavigationStack {
+                HistoryView(viewModel: viewModel)
+            }
+            .tabItem {
+                Label("History", systemImage: "clock.arrow.circlepath")
+            }
         }
-        .padding()
+        .alert(item: $viewModel.patientMessage) { patientMessage in
+            Alert(
+                title: Text(patientMessage.title),
+                message: Text(patientMessage.message),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
 }
 
