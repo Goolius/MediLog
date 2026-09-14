@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+  <defs>
+    <style>
+      .page { fill: #f7f8fa; }
+      .title { font: 700 34px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #16202a; }
+      .subtitle { font: 500 18px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #52616f; }
+      .section-title { font: 700 20px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #1b2a38; }
+      .box-title { font: 700 18px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #15212b; }
+      .box-text { font: 500 15px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #3e4d5a; }
+      .small-text { font: 500 13px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #52616f; }
+      .human { fill: #fff3e8; stroke: #e59b4b; stroke-width: 2; }
+      .view { fill: #eef7ff; stroke: #4b9fe5; stroke-width: 2; }
+      .vm { fill: #f0efff; stroke: #7b71d8; stroke-width: 2; }
+      .usecase { fill: #edf9f0; stroke: #48a868; stroke-width: 2; }
+      .domain { fill: #fff7dd; stroke: #d2a724; stroke-width: 2; }
+      .data { fill: #f6edf9; stroke: #a65bb7; stroke-width: 2; }
+      .note { fill: #ffffff; stroke: #cfd8e3; stroke-width: 1.5; }
+      .arrow { stroke: #34495e; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead); }
+      .flow-arrow { stroke: #0f766e; stroke-width: 3; fill: none; marker-end: url(#flowhead); }
+      .boundary { stroke: #9aa8b5; stroke-width: 2; stroke-dasharray: 10 8; fill: none; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#34495e" />
+    </marker>
+    <marker id="flowhead" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#0f766e" />
+    </marker>
+  </defs>
+
+  <rect class="page" x="0" y="0" width="1400" height="1000" />
+
+  <text class="title" x="70" y="70">MediLog Human-System Architecture Diagram</text>
+  <text class="subtitle" x="70" y="103">Primary workflow: a patient records a medication as taken and logs side effects for their personal medication history.</text>
+
+  <rect class="boundary" x="54" y="138" width="382" height="774" rx="18" />
+  <text class="section-title" x="84" y="176">Human Workflow</text>
+
+  <rect class="human" x="84" y="205" width="300" height="98" rx="14" />
+  <text class="box-title" x="112" y="240">Patient at home</text>
+  <text class="box-text" x="112" y="268">Needs to know what medication</text>
+  <text class="box-text" x="112" y="290">to take and record side effects.</text>
+
+  <rect class="human" x="84" y="350" width="300" height="116" rx="14" />
+  <text class="box-title" x="112" y="385">Human action</text>
+  <text class="box-text" x="112" y="413">Taps the taken icon, confirms</text>
+  <text class="box-text" x="112" y="435">symptoms, severity, and notes.</text>
+
+  <rect class="human" x="84" y="515" width="300" height="118" rx="14" />
+  <text class="box-title" x="112" y="550">Human result</text>
+  <text class="box-text" x="112" y="578">Sees updated schedule status,</text>
+  <text class="box-text" x="112" y="600">taken/overdue/early labels, and</text>
+  <text class="box-text" x="112" y="622">history of medication events.</text>
+
+  <text class="small-text" x="92" y="855">Human-system boundary: the patient decides what happened.</text>
+  <text class="small-text" x="92" y="878">The app validates, records, stores, and displays it.</text>
+
+  <path class="arrow" d="M 234 303 L 234 342" />
+  <path class="arrow" d="M 234 466 L 234 507" />
+
+  <rect class="boundary" x="478" y="138" width="868" height="774" rx="18" />
+  <text class="section-title" x="508" y="176">MediLog iOS System Layers</text>
+
+  <rect class="view" x="525" y="205" width="300" height="118" rx="14" />
+  <text class="box-title" x="553" y="239">SwiftUI Views</text>
+  <text class="box-text" x="553" y="267">DashboardView</text>
+  <text class="box-text" x="553" y="289">DoseConfirmationView</text>
+  <text class="box-text" x="553" y="311">HistoryView / AddMedicationView</text>
+
+  <rect class="vm" x="950" y="205" width="300" height="118" rx="14" />
+  <text class="box-title" x="978" y="239">ViewModel</text>
+  <text class="box-text" x="978" y="267">MediLogViewModel</text>
+  <text class="box-text" x="978" y="289">Builds schedule sections</text>
+  <text class="box-text" x="978" y="311">Shows messages and history</text>
+
+  <rect class="usecase" x="525" y="392" width="300" height="160" rx="14" />
+  <text class="box-title" x="553" y="426">Use Case Layer</text>
+  <text class="box-text" x="553" y="454">RecordMedicationDoseUseCase</text>
+  <text class="box-text" x="553" y="476">RecordSideEffectCheckInUseCase</text>
+  <text class="box-text" x="553" y="498">ScheduleMedicationReminderUseCase</text>
+  <text class="box-text" x="553" y="520">AddMedicationToPlanUseCase</text>
+
+  <rect class="domain" x="950" y="392" width="300" height="160" rx="14" />
+  <text class="box-title" x="978" y="426">Domain Models</text>
+  <text class="box-text" x="978" y="454">Medication</text>
+  <text class="box-text" x="978" y="476">MedicationSchedule</text>
+  <text class="box-text" x="978" y="498">MedicationDoseRecord</text>
+  <text class="box-text" x="978" y="520">SideEffectCheckIn</text>
+
+  <rect class="data" x="740" y="650" width="320" height="126" rx="14" />
+  <text class="box-title" x="768" y="684">Repository + Data</text>
+  <text class="box-text" x="768" y="712">MedicationRepository protocol</text>
+  <text class="box-text" x="768" y="734">LocalMedicationRepository</text>
+  <text class="box-text" x="768" y="756">JSON file in app documents</text>
+
+  <rect class="note" x="525" y="824" width="725" height="60" rx="12" />
+  <text class="box-text" x="552" y="852">Business rules live in Use Cases, not Views: duplicate records are blocked, invalid severities are rejected,</text>
+  <text class="box-text" x="552" y="874">early/late medication events are recorded and displayed in patient-friendly language.</text>
+
+  <path class="arrow" d="M 384 407 C 432 407, 470 264, 517 264" />
+  <path class="arrow" d="M 825 264 L 942 264" />
+  <path class="arrow" d="M 1100 323 L 1100 384" />
+  <path class="arrow" d="M 950 472 L 833 472" />
+  <path class="arrow" d="M 675 552 C 675 616, 740 610, 820 643" />
+  <path class="arrow" d="M 980 650 C 1120 610, 1128 555, 1128 552" />
+
+  <path class="flow-arrow" d="M 675 323 L 675 384" />
+  <text class="small-text" x="694" y="359">taken icon opens confirmation</text>
+
+  <path class="flow-arrow" d="M 825 472 C 888 472, 888 472, 942 472" />
+  <text class="small-text" x="840" y="454">validated records use domain models</text>
+
+  <path class="flow-arrow" d="M 900 776 L 900 824" />
+
+  <path class="flow-arrow" d="M 740 713 C 600 713, 470 615, 384 575" />
+  <text class="small-text" x="462" y="686">updated history and schedule shown back to patient</text>
+
+  <text class="section-title" x="70" y="955">Primary data flow</text>
+  <text class="subtitle" x="250" y="955">Patient confirms medication -> ViewModel calls Use Cases -> rules validate -> Repository saves -> UI updates schedule and history.</text>
+</svg>
